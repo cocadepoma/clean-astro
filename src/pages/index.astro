@@ -1,5 +1,7 @@
 ---
-
+import AstroIsland from "./astro/AstroIsland.astro";
+import { ReactIsland } from "./react/ReactIsland";
+import { SolidIsland } from "./solid/SolidIsland";
 ---
 
 <html lang="en">
@@ -12,5 +14,11 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+
+		<AstroIsland />
+
+		<ReactIsland client:only="react" />
+
+		<SolidIsland client:only="solid-js" />
 	</body>
 </html>

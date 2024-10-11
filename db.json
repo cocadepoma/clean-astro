@@ -1,0 +1,25 @@
+{
+  "frameworks": [
+    {
+      "id": "123",
+      "name": "React",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+      "description": "A JavaScript library for building user interfaces",
+      "stars": 147000
+    },
+    {
+      "id": "456",
+      "name": "Solid",
+      "image": "https://www.solidjs.com/img/logo/without-wordmark/logo.png",
+      "description": "A declarative JavaScript library for building user interfaces",
+      "stars": 10000
+    },
+    {
+      "id": "789",
+      "name": "Astro",
+      "image": "https://astro.build/assets/press/astro-logo-light-gradient.svg",
+      "description": "A new kind of static site builder",
+      "stars": 1000
+    }
+  ]
+}
