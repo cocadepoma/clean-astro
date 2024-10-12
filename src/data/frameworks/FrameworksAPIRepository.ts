@@ -1,25 +1,18 @@
-import axios, { type Axios } from "axios";
-
 import { Framework } from "@domain/frameworks/entities/Framework";
 import type { FrameworksRepository } from "@domain/frameworks/repository/FrameworksRepository";
-import type { FrameworkAPI } from "./FrameworkAPI";
+import type { FrameworkApi, IFrameworkAPI } from "./FrameworkAPI";
 
 export class FrameworksAPIRepository implements FrameworksRepository {
-  private api: Axios;
 
-  constructor() {
-    this.api = axios.create({
-      baseURL: import.meta.env.API_URL,
-    });
-  }
+  constructor(private frameworkApi: FrameworkApi) { }
 
   async getFrameworks(): Promise<Framework[]> {
-    const response = await this.api.get<FrameworkAPI[]>("/frameworks");
+    const response = await this.frameworkApi.getAll();
 
-    return response.data.map((data) => this._mapToDomain(data));
+    return response.map((data) => this._mapToDomain(data));
   }
 
-  _mapToDomain(data: FrameworkAPI): Framework {
+  _mapToDomain(data: IFrameworkAPI): Framework {
     return Framework.create({
       id: data.id,
       name: data.name,

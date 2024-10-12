@@ -1,15 +1,27 @@
 /** @jsxImportSource react */
 
-import React, { useState } from "react"
+import { useMemo } from "react";
+import { CompositionRoot } from "@CompositionRoot";
+
+import { useFrameworks } from "./useFrameworks";
 
 export const ReactIsland = () => {
-  const [count, setCount] = useState(0);
+  const getFrameworksUseCase = useMemo(() => CompositionRoot.getInstance().provideGetFrameworksUseCase(), []);
+  const { frameworks, loading } = useFrameworks(getFrameworksUseCase);
 
   return (
-    <div>
-      <h3>ReactIsland</h3>
-      <div>{count}</div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+    <div className="island__container">
+      <h3 className="header">ReactIsland</h3>
+      {loading && <div>Loading Frameworks...</div>}
+
+      {!loading && frameworks.map((framework) => (
+        <section className="island__framework" key={framework.id.value}>
+          <h4 className="title">{framework.name.value}</h4>
+          <p className="description">{framework.description.value}</p>
+          <img className="image" src={framework.image.value} alt={framework.name.value} />
+          <p className="popularity">Popularity: {framework.popularity.value}</p>
+        </section>
+      ))}
     </div>
   )
 }

@@ -2,6 +2,8 @@
 import AstroIsland from "./astro/AstroIsland.astro";
 import { ReactIsland } from "./react/ReactIsland";
 import { SolidIsland } from "./solid/SolidIsland";
+
+import "./styles/index.css";
 ---
 
 <html lang="en">
@@ -13,12 +15,14 @@ import { SolidIsland } from "./solid/SolidIsland";
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Clean Astro</h1>
 
-		<AstroIsland />
+		<main class="islands__container">
+			<AstroIsland />
 
-		<ReactIsland client:only="react" />
+			<ReactIsland client:only="react" />
 
-		<SolidIsland client:only="solid-js" />
+			<SolidIsland client:only="solid-js" />
+		</main>
 	</body>
 </html>

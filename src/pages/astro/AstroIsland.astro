@@ -1,18 +1,26 @@
 ---
+import { CompositionRoot } from "@CompositionRoot";
 
+const usecase = CompositionRoot.getInstance().provideGetFrameworksUseCase();
+
+const frameworks = await usecase.execute();
 ---
 
-<div>
-	<h3>AstroIsland</h3>
-	<div id="counter">0</div>
-	<button id="increment">Increment</button>
+<div class="island__container">
+	<h3 class="header">AstroIsland</h3>
+
+	{
+		frameworks.map((framework) => (
+			<section class="island__framework">
+				<h4 class="title">{framework.name.value}</h4>
+				<p class="description">{framework.description.value}</p>
+				<img
+					class="image"
+					src={framework.image.value}
+					alt={framework.name.value}
+				/>
+				<p class="popularity">Popularity: {framework.popularity.value}</p>
+			</section>
+		))
+	}
 </div>
-
-<script>
-	const counter = document.getElementById("counter")!;
-	const increment = document.getElementById("increment")!;
-
-	increment.addEventListener("click", () => {
-		counter.textContent = `${parseInt(`${counter.textContent}`) + 1}`;
-	});
-</script>

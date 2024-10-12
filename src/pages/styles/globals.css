@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+}
+
+.island__container {
+  width: 30%;
+
+  .header {
+    color: red;
+  }
+
+  .island__framework {
+    animation: var(--fade-in);
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
