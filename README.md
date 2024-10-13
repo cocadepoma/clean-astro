@@ -19,4 +19,6 @@ pnpm install
 pnpm dev
 ```
 
-`json-server` is used for serving **db.json** as a fake API
+## Info
+
+`json-server` is used for serving **db.json** as a fake API, make sure is running
