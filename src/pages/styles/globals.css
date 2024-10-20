@@ -5,7 +5,10 @@ html {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   line-height: 1.5;
 
-  @media (min-width: 992px) {
+}
+
+body {
+  @media (min-width: 1200px) {
     overflow: hidden;
   }
 }
