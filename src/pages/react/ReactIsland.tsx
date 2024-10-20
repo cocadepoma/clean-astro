@@ -10,18 +10,41 @@ export const ReactIsland = () => {
   const { frameworks, loading } = useFrameworks(getFrameworksUseCase);
 
   return (
-    <div className="island__container">
-      <h3 className="header">ReactIsland</h3>
-      {loading && <div>Loading Frameworks...</div>}
+    <div className="island__container react">
+      <h3 className="header">React Island</h3>
 
-      {!loading && frameworks.map((framework) => (
-        <section className="island__framework" key={framework.id.value}>
-          <h4 className="title">{framework.name.value}</h4>
-          <p className="description">{framework.description.value}</p>
-          <img className="image" src={framework.image.value} alt={framework.name.value} />
-          <p className="popularity">Popularity: {framework.popularity.value}</p>
-        </section>
-      ))}
+      <div className="island__frameworks custom-scroll">
+        {loading && <div>Loading Frameworks...</div>}
+
+        {!loading && frameworks.map((framework) => (
+          <a key={framework.id.value} href={framework.page.value} target="_blank">
+
+            <section className="island__framework">
+              <div className="island__image-container">
+                <img
+                  className="image"
+                  src={framework.image.value}
+                  alt={framework.name.value}
+                />
+                <h4 className="title">{framework.name.value}</h4>
+              </div>
+              <div className="island__info-container">
+                <p>
+                  <span>Description:</span>
+                  {framework.description.value}
+                </p>
+                <p>
+                  <span>Popularity:</span>
+                  <span className="popularity">
+                    {framework.popularity.value}
+                  </span>
+                  ⭑
+                </p>
+              </div>
+            </section>
+          </a>
+        ))}
+      </div>
     </div>
   )
 }

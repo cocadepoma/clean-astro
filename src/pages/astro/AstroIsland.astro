@@ -7,20 +7,34 @@ const frameworks = await usecase.execute();
 ---
 
 <div class="island__container">
-	<h3 class="header">AstroIsland</h3>
+	<h3 class="header">Astro Island</h3>
 
-	{
-		frameworks.map((framework) => (
-			<section class="island__framework">
-				<h4 class="title">{framework.name.value}</h4>
-				<p class="description">{framework.description.value}</p>
-				<img
-					class="image"
-					src={framework.image.value}
-					alt={framework.name.value}
-				/>
-				<p class="popularity">Popularity: {framework.popularity.value}</p>
-			</section>
-		))
-	}
+	<div class="island__frameworks custom-scroll">
+		{
+			frameworks.map((framework) => (
+				<a href={framework.page.value} target="_blank">
+					<section class="island__framework">
+						<div class="island__image-container">
+							<img
+								class="image"
+								src={framework.image.value}
+								alt={framework.name.value}
+							/>
+							<h4 class="title">{framework.name.value}</h4>
+						</div>
+						<div class="island__info-container">
+							<p>
+								<span>Description:</span>
+								{framework.description.value}
+							</p>
+							<p>
+								<span>Popularity:</span>
+								<span class="popularity">{framework.popularity.value}</span>⭑
+							</p>
+						</div>
+					</section>
+				</a>
+			))
+		}
+	</div>
 </div>

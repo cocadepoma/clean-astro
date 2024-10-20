@@ -4,6 +4,10 @@ export class GetFrameworksUseCase {
   constructor(private repository: FrameworksAPIRepository) { }
 
   async execute() {
-    return this.repository.getFrameworks();
+    try {
+      return await this.repository.getFrameworks();
+    } catch (error) {
+      throw new Error(`Error getting frameworks ${error}`);
+    }
   }
 }

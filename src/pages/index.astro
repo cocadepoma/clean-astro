@@ -15,14 +15,25 @@ import "./styles/index.css";
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Clean Astro</h1>
+		<main>
+			<div class="header-description">
+				<h1><span>Clean</span> Astro</h1>
+				<p>
+					Welcome to the clean Astro project!
+					<br />
+					This project is a simple example of how to use Astro with different
+					<br />
+					client-side frameworks using Clean Architecture principles.
+				</p>
+			</div>
 
-		<main class="islands__container">
-			<AstroIsland />
+			<div class="islands__container">
+				<AstroIsland />
 
-			<ReactIsland client:only="react" />
+				<ReactIsland client:only="react" />
 
-			<SolidIsland client:only="solid-js" />
+				<SolidIsland client:only="solid-js" />
+			</div>
 		</main>
 	</body>
 </html>

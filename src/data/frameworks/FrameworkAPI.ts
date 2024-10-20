@@ -6,6 +6,7 @@ export interface IFrameworkAPI {
   image: string;
   description: string;
   stars: number;
+  page: string;
 }
 
 export class FrameworkApi {

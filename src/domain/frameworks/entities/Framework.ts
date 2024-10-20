@@ -3,6 +3,7 @@ import {
   ImageSrc,
   Name,
   Popularity,
+  UrlPage,
 } from "../vos";
 
 export interface FrameworkDataProps {
@@ -11,14 +12,16 @@ export interface FrameworkDataProps {
   description: Name;
   image: ImageSrc;
   popularity: Popularity;
+  page: UrlPage;
 }
 
 export interface FrameworkProps {
   id: string;
   name: string;
   description: string;
-  image: string;
+  image?: string;
   popularity: number;
+  page: string;
 }
 
 export class Framework {
@@ -27,6 +30,7 @@ export class Framework {
   public readonly description: Name;
   public readonly image: ImageSrc;
   public readonly popularity: Popularity;
+  public readonly page: UrlPage;
 
   private constructor(props: FrameworkDataProps) {
     this.id = props.id;
@@ -34,6 +38,7 @@ export class Framework {
     this.description = props.description
     this.image = props.image;
     this.popularity = props.popularity;
+    this.page = props.page;
   }
 
   static create(props: FrameworkProps): Framework {
@@ -43,8 +48,9 @@ export class Framework {
       const description = Name.create(props.description);
       const image = ImageSrc.create(props.image);
       const popularity = Popularity.create(props.popularity);
+      const page = UrlPage.create(props.page);
 
-      return new Framework({ id, name, description, image, popularity });
+      return new Framework({ id, name, description, image, popularity, page });
     } catch (error) {
       throw Error(`Error creating Framework entity: ${error}`);
     }
@@ -57,8 +63,9 @@ export class Framework {
       const description = props.description ? Name.create(props.description) : this.description;
       const image = props.image ? ImageSrc.create(props.image) : this.image;
       const popularity = props.popularity ? Popularity.create(props.popularity) : this.popularity;
+      const page = props.page ? UrlPage.create(props.page) : this.page;
 
-      return new Framework({ id, name, description, image, popularity });
+      return new Framework({ id, name, description, image, popularity, page });
     } catch (error) {
       throw Error(`Error updating Framework entity: ${error}`);
     }
@@ -71,6 +78,7 @@ export class Framework {
       description: this.description.value,
       image: this.image.value,
       popularity: this.popularity.value,
+      page: this.page.value,
     };
   }
 }

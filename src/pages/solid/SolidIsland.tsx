@@ -8,23 +8,44 @@ export function SolidIsland() {
   const { frameworks, loading } = useFrameworks(getFrameworksUseCase);
 
   return (
-    <div class="island__container">
-      <h3 class="header">AstroIsland</h3>
-      <Show when={loading()}>Loading Frameworks...</Show>
+    <div class="island__container solid">
+      <h3 class="header">Solid Island</h3>
 
-      <Show when={!loading()}>
-        <For each={frameworks()}>
-          {(framework) => (
-            <section class="island__framework">
-              <h4 class="title">{framework.name.value}</h4>
-              <p class="description">{framework.description.value}</p>
-              <img class="image" src={framework.image.value} alt={framework.name.value} />
-              <p class="popularity">Popularity: {framework.popularity.value}</p>
-            </section>
-          )}
-        </For>
-      </Show>
+      <div class="island__frameworks custom-scroll">
+        <Show when={loading()}>Loading Frameworks...</Show>
 
+        <Show when={!loading()}>
+          <For each={frameworks()}>
+            {(framework) => (
+              <a href={framework.page.value} target="_blank">
+                <section class="island__framework">
+                  <div class="island__image-container">
+                    <img
+                      class="image"
+                      src={framework.image.value}
+                      alt={framework.name.value}
+                    />
+                    <h4 class="title">{framework.name.value}</h4>
+                  </div>
+                  <div class="island__info-container">
+                    <p>
+                      <span>Description:</span>
+                      {framework.description.value}
+                    </p>
+                    <p>
+                      <span>Popularity:</span>
+                      <span class="popularity">
+                        {framework.popularity.value}
+                      </span>
+                      ⭑
+                    </p>
+                  </div>
+                </section>
+              </a>
+            )}
+          </For>
+        </Show>
+      </div>
     </div>
   )
 }

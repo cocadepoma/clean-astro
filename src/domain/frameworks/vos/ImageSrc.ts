@@ -10,11 +10,9 @@ export class ImageSrc extends ValueObject<ImageSrcProps> {
     super(props);
   }
 
-  public static create(image: string): ImageSrc {
-    if (image.length === 0) {
-      throw new Error("image is required");
-    } else if (!this.isValidUrl(image)) {
-      throw new Error("image is not a valid URL");
+  public static create(image?: string): ImageSrc {
+    if (!image || image?.length === 0 || !this.isValidUrl(image)) {
+      return new ImageSrc({ value: 'https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg' });
     } else {
       return new ImageSrc({ value: this.format(image) });
     }

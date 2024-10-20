@@ -1,0 +1,107 @@
+.islands__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    height: calc(100% - 10rem);
+  }
+
+  .island__container {
+    width: 100%;
+    box-shadow: 0 0 10px -8px rgba(255, 255, 255, 1);
+    border-radius: 1rem;  
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 0.8s infinite;
+
+    &.react {
+      animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 1.2s infinite;
+    }
+
+    &.solid {
+      animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 1.6s infinite;
+    }
+    
+    h3 {
+      letter-spacing: 0.1rem; 
+      text-align: center;
+      font-size: 1.5rem;  
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.7rem;
+      box-shadow: 0 2px 10px -4px rgba(255, 255, 255, 0.2);
+    }
+    
+    @media (min-width: 1200px) {
+      width: 30%;
+    }
+
+    .island__frameworks {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+      
+      a {
+        all: unset;
+      }
+
+      .island__framework {
+        cursor: pointer;
+        animation: var(--fade-in);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        transition: border 0.5s;
+        
+        &:hover {
+          border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+  
+        .island__image-container {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          
+          h4 {
+            margin-top: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.05rem;
+          }
+        }
+        
+        .island__info-container {
+          width: 80%;
+
+          p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            letter-spacing: 0.05rem;
+
+            span {
+              letter-spacing: 0.1rem;
+              text-decoration: underline;
+              display: inline-block;
+              margin-right: 0.2rem;
+
+              &.popularity {
+                color: rgb(81, 199, 73);
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
