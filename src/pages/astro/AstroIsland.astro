@@ -10,10 +10,7 @@ const getFramworks =
 const getFrameworkByName =
 	CompositionRoot.getInstance().provideGetFrameworkByNameUseCase();
 
-const frameworks = await getFramworks.execute({
-	order: FrameworkOrder.DESC,
-	sort: FrameworkSort.POPULARITY,
-});
+const frameworks = await getFramworks.execute({});
 
 const astroFramework = await getFrameworkByName.execute("Astro");
 ---
@@ -23,8 +20,8 @@ const astroFramework = await getFrameworkByName.execute("Astro");
 		<img src={astroFramework.image.value} alt="Astro" />
 
 		<div class="params">
-			<p><span>Order</span>: Desc</p>
-			<p><span>Sort</span>: Stars</p>
+			<p><span>Order</span>: Default</p>
+			<p><span>Sort</span>: Default</p>
 			<p><span>Limit</span>: None</p>
 		</div>
 	</div>

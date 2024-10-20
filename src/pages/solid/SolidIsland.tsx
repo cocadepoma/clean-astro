@@ -21,8 +21,8 @@ export function SolidIsland() {
 
         <div class="params">
           <p><span>Order</span>: Desc</p>
-          <p><span>Sort</span>: Stars</p>
-          <p><span>Limit</span>: None</p>
+          <p><span>Sort</span>: By Name</p>
+          <p><span>Limit</span>: 3</p>
         </div>
       </div>
 
