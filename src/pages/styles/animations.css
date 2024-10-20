@@ -1,6 +1,8 @@
 :root {
   --fade-in-top: fade-in-top 0.8s ease-in-out;
-  --pulse-shadow: pulse-shadow 4s infinite;
+  --pulse-shadow-astro: pulse-shadow-astro 4s infinite;
+  --pulse-shadow-react: pulse-shadow-react 4s infinite;
+  --pulse-shadow-solid: pulse-shadow-solid 4s infinite;
   --slide-from-top: slide-from-top 0.5s ease-in-out 0.9s forwards;
 }
 
@@ -15,15 +17,39 @@
   }
 }
 
-@keyframes pulse-shadow {
+@keyframes pulse-shadow-astro {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0 rgba(255, 2, 251, 0.386);
   }
   70% {
     box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+}
+
+@keyframes pulse-shadow-react {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 162, 205, 0.627);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(97, 218, 251, 0);
+  }
+}
+
+@keyframes pulse-shadow-solid {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 82, 255, 0.496);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 

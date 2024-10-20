@@ -14,22 +14,34 @@
     width: 100%;
     box-shadow: 0 0 10px -8px rgba(255, 255, 255, 1);
     border-radius: 1rem;  
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(246, 134, 242, 0.3);
     display: flex;
     flex-direction: column;
-    animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 0.8s infinite;
+    animation: var(--fade-in-top), pulse-shadow-astro 4s ease-in-out 0.8s infinite;
 
     &.react {
-      animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 1.2s infinite;
+      animation: var(--fade-in-top), pulse-shadow-react 4s ease-in-out 1.2s infinite;
+      border: 1px solid rgba(10, 162, 205, 0.3);
+
+      .island__header {
+        box-shadow: 0 2px 10px -4px rgba(10, 162, 205, 0.2);
+        border-bottom: 1px solid rgba(10, 162, 205, 0.1);
+      }
     }
 
     &.solid {
-      animation: var(--fade-in-top), pulse-shadow 4s ease-in-out 1.6s infinite;
+      animation: var(--fade-in-top), pulse-shadow-solid 4s ease-in-out 1.6s infinite;
+      border: 1px solid rgba(3, 82, 255, 0.3);
+
+      .island__header {
+        box-shadow: 0 2px 10px -4px rgba(3, 82, 255, 0.2);
+        border-bottom: 1px solid rgba(3, 82, 255, 0.1);
+      }
     }
     
     .island__header {
-      box-shadow: 0 2px 10px -4px rgba(255, 255, 255, 0.2);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 10px -4px rgba(255, 2, 251, 0.2);
+      border-bottom: 1px solid rgba(255, 2, 251, 0.1);
       text-align: center;
       padding: 1rem;
 
