@@ -36,10 +36,9 @@ main {
       font-size: 2.5rem;
       text-align: center;
       letter-spacing: 0.05rem;
-      color: rgb(241, 198, 203);
       
       span {
-        color: rgb(176, 243, 207);
+        color: rgb(45, 184, 234);
       }
     }
 
