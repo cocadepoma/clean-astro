@@ -1,13 +1,33 @@
 ---
 import { CompositionRoot } from "@CompositionRoot";
+import {
+	FrameworkOrder,
+	FrameworkSort,
+} from "@domain/frameworks/repository/FrameworksRepository";
 
-const usecase = CompositionRoot.getInstance().provideGetFrameworksUseCase();
+const getFramworks =
+	CompositionRoot.getInstance().provideGetFrameworksUseCase();
+const getFrameworkByName =
+	CompositionRoot.getInstance().provideGetFrameworkByNameUseCase();
 
-const frameworks = await usecase.execute();
+const frameworks = await getFramworks.execute({
+	order: FrameworkOrder.DESC,
+	sort: FrameworkSort.POPULARITY,
+});
+
+const astroFramework = await getFrameworkByName.execute("Astro");
 ---
 
 <div class="island__container">
-	<h3 class="header">Astro Island</h3>
+	<div class="island__header">
+		<img src={astroFramework.image.value} alt="Astro" />
+
+		<div class="params">
+			<p><span>Order</span>: Desc</p>
+			<p><span>Sort</span>: Stars</p>
+			<p><span>Limit</span>: None</p>
+		</div>
+	</div>
 
 	<div class="island__frameworks custom-scroll">
 		{

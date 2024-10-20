@@ -1,7 +1,10 @@
 import axios from "axios";
-import { FrameworkApi } from "@data/frameworks/FrameworkAPI";
-import { FrameworksAPIRepository } from "@data/frameworks/FrameworksAPIRepository";
+
 import { GetFrameworksUseCase } from "@domain/frameworks/use_cases/GetFrameworksUseCase";
+import { GetFrameworkByNameUseCase } from "@domain/frameworks/use_cases/GetFrameworkByNameUseCase";
+
+import { FrameworksAPIRepository } from "@data/frameworks/FrameworksAPIRepository";
+import { FrameworkApi } from "@data/frameworks/FrameworkAPI";
 import { ImageApi } from "@data/frameworks/ImageAPI";
 
 export class CompositionRoot {
@@ -31,5 +34,9 @@ export class CompositionRoot {
 
   public provideGetFrameworksUseCase() {
     return new GetFrameworksUseCase(this.frameworksRepository);
+  }
+
+  public provideGetFrameworkByNameUseCase() {
+    return new GetFrameworkByNameUseCase(this.frameworksRepository);
   }
 }

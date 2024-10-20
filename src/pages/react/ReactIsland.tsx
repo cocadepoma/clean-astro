@@ -7,11 +7,28 @@ import { useFrameworks } from "./useFrameworks";
 
 export const ReactIsland = () => {
   const getFrameworksUseCase = useMemo(() => CompositionRoot.getInstance().provideGetFrameworksUseCase(), []);
-  const { frameworks, loading } = useFrameworks(getFrameworksUseCase);
+  const getFrameworkByNameUseCase = useMemo(() => CompositionRoot.getInstance().provideGetFrameworkByNameUseCase(), []);
+  const { framework, frameworks, loading } = useFrameworks(
+    getFrameworksUseCase,
+    getFrameworkByNameUseCase,
+  );
 
   return (
     <div className="island__container react">
-      <h3 className="header">React Island</h3>
+      <div className="island__header">
+        {framework && (
+          <img className="react"
+            src={framework.image.value}
+            alt="React logo"
+          />
+        )}
+
+        <div className="params">
+          <p><span>Order</span>: Asc</p>
+          <p><span>Sort</span>: By Name</p>
+          <p><span>Limit</span>: 6</p>
+        </div>
+      </div>
 
       <div className="island__frameworks custom-scroll">
         {loading && <div>Loading Frameworks...</div>}

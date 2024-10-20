@@ -5,11 +5,26 @@ import { useFrameworks } from "./useFrameworks";
 
 export function SolidIsland() {
   const getFrameworksUseCase = CompositionRoot.getInstance().provideGetFrameworksUseCase();
-  const { frameworks, loading } = useFrameworks(getFrameworksUseCase);
+  const getFrameworkByNameUseCase = CompositionRoot.getInstance().provideGetFrameworkByNameUseCase();
+
+  const { framework, frameworks, loading } = useFrameworks(
+    getFrameworksUseCase,
+    getFrameworkByNameUseCase,
+  );
 
   return (
     <div class="island__container solid">
-      <h3 class="header">Solid Island</h3>
+      <div class="island__header">
+        <Show when={framework()}>
+          <img src={framework()!.image.value} alt="Solid logo" />
+        </Show>
+
+        <div class="params">
+          <p><span>Order</span>: Desc</p>
+          <p><span>Sort</span>: Stars</p>
+          <p><span>Limit</span>: None</p>
+        </div>
+      </div>
 
       <div class="island__frameworks custom-scroll">
         <Show when={loading()}>Loading Frameworks...</Show>
