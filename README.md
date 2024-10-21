@@ -6,6 +6,7 @@ Clean Architecture in Astro using for rendering:
 - React
 - Solid
 
+In React and Solid Custom Hooks are used as presentation pattern
 
 ## Installation
 
