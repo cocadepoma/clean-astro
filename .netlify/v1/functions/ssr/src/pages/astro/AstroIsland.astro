@@ -1,0 +1,57 @@
+---
+import { CompositionRoot } from "@CompositionRoot";
+import {
+	FrameworkOrder,
+	FrameworkSort,
+} from "@domain/frameworks/repository/FrameworksRepository";
+
+const getFramworks =
+	CompositionRoot.getInstance().provideGetFrameworksUseCase();
+const getFrameworkByName =
+	CompositionRoot.getInstance().provideGetFrameworkByNameUseCase();
+
+const frameworks = await getFramworks.execute({});
+
+const astroFramework = await getFrameworkByName.execute("Astro");
+---
+
+<div class="island__container">
+	<div class="island__header">
+		<img src={astroFramework.image.value} alt="Astro" />
+
+		<div class="params">
+			<p><span>Order</span>: Default</p>
+			<p><span>Sort</span>: Default</p>
+			<p><span>Limit</span>: None</p>
+		</div>
+	</div>
+
+	<div class="island__frameworks custom-scroll">
+		{
+			frameworks.map((framework) => (
+				<a href={framework.page.value} target="_blank">
+					<section class="island__framework">
+						<div class="island__image-container">
+							<img
+								class="image"
+								src={framework.image.value}
+								alt={framework.name.value}
+							/>
+							<h4 class="title">{framework.name.value}</h4>
+						</div>
+						<div class="island__info-container">
+							<p>
+								<span>Description:</span>
+								{framework.description.value}
+							</p>
+							<p>
+								<span>Popularity:</span>
+								<span class="popularity">{framework.popularity.value}</span>⭑
+							</p>
+						</div>
+					</section>
+				</a>
+			))
+		}
+	</div>
+</div>

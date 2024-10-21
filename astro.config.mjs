@@ -5,6 +5,8 @@ import react from '@astrojs/react';
 
 import solidJs from '@astrojs/solid-js';
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -14,5 +16,8 @@ export default defineConfig({
     solidJs({
       include: ['**/solid/*']
     }),
-  ]
+  ],
+
+  output: 'server',
+  adapter: netlify()
 });

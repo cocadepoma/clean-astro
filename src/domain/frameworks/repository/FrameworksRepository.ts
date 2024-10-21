@@ -18,5 +18,4 @@ export interface GetFrameworksParams {
 
 export interface FrameworksRepository {
   getFrameworks({ limit, order }: Partial<GetFrameworksParams>): Promise<Framework[]>;
-  getFrameworkByName(name: string): Promise<Framework>;
 }
